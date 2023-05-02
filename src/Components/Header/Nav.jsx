@@ -11,10 +11,12 @@ import { images } from "../../assets";
 import Search from "../SearchBar/Search";
 
 const navItem = [
-  { title: "Dashboard", href: "" },
-  { title: "Team", href: "" },
-  { title: "Projects", href: "" },
-  { title: "Calendar", href: "" },
+  { title: "Fashion", href: "" },
+  { title: "Groceries", href: "" },
+  { title: "Health & Beauty", href: "" },
+  { title: "Home & Lifestyle", href: "" },
+  { title: "Mobiles & Tablets", href: "" },
+  { title: "Automobiles", href: "" },
 ];
 
 export const Nav = () => {
@@ -25,19 +27,19 @@ export const Nav = () => {
   }
   return (
     <nav className="">
-      <div className=" bg-[#EAF4F4]  lg:px-8 p-2 md:px-4 ">
-        <div className="flex items-center justify-between max-w-6xl mx-auto border-b md:border-none border-[#CCE3DE]">
+      <div className=" bg-[#CCE3DE]  lg:px-8 p-2 md:px-4 ">
+        <div className="flex flex-col items-center justify-between max-w-6xl mx-auto border-b md:border-none border-[#CCE3DE]">
           <div className="w-full flex justify-between items-center">
             <a href="/" className="basis-1/6 text-gray-800">
               <img className="w-16" src={images.logo} alt="Workflow" />
             </a>
             {/* search Form */}
-            <div className="hidden md:block">
+            <div className="hidden md:block w-full">
             <Search></Search>
             </div>
 
             <div className="basis-1/4 ">
-              <div className="flex gap-6 justify-end items-center">
+              <div className="flex gap-3 justify-end items-center">
                 <button className="relative">
                   <MdOutlineFavoriteBorder className="text-[25px] md:text-[30px] text-[#457B9D] " />
                   <span className="absolute top-[0px] right-[0px] translate-x-[50%] translate-y-[-50%] text-[6px] md:text-[10px] md:p-2 bg-[#457B9D] text-white rounded-full w-3 md:w-4 h-3 md:h-4  inline-flex justify-center items-center">
@@ -57,8 +59,31 @@ export const Nav = () => {
               </div>
             </div>
           </div>
+          
         </div>
-        <div className="flex justify-between md:hidden pt-2">
+
+       
+      </div>
+
+      {/* for large device */}
+      <div className=" bg-[#EAF4F4] hidden md:block">
+         <div className="max-w-6xl flex mx-auto">
+         {navItem.map((data, index) => {
+            return (
+              <a
+                href="/"
+                className="block py-2 text-[14px] px-3 font-medium text-gray-800  focus:outline-none focus:text-[#457B9D] hover:text-[#457B9D]  transition duration-150 ease-in-out first:pl-0"
+              >
+                {data.title}
+              </a>
+            );
+          })}
+         </div>
+        </div>
+
+      {/* For Mobile menu */}
+
+      <div className="flex justify-between md:hidden p-2 bg-[#EAF4F4]">
           <button
             type="button"
             className=" inline-flex items-center justify-center  rounded text-gray-400 focus:text-[#457B9D] hover:text-[#457B9D]  transition duration-150 ease-in-out " /* hover:bg-[#457B9D] focus:outline-none focus:bg-[#457B9D] focus:text-white */
@@ -86,9 +111,6 @@ export const Nav = () => {
             <Search></Search>
             </div>
         </div>
-      </div>
-
-      {/* For Mobile menu */}
       <div
         className={`md:hidden ${mobileMenuVisible ? "block bg-[#EAF4F4]" : "hidden"}`}
         id="mobile-menu"
@@ -98,7 +120,7 @@ export const Nav = () => {
             return (
               <a
                 href="/"
-                className="block py-1 text-[10px] p-2 font-medium text-gray-800  focus:outline-none focus:text-white  hover:text-[#457B9D]  transition duration-150 ease-in-out"
+                className="block py-1 text-[10px] p-2 font-medium text-gray-800  focus:outline-none focus:text-white focus:bg-[#457B9D]  hover:text-[#ffffff]  transition duration-150 ease-in-out"
               >
                 {data.title}
               </a>
