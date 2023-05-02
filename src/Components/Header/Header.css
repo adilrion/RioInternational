@@ -1,0 +1,13 @@
+@media (min-width: 768px) {
+    /* Show the desktop menu */
+    #mobile-menu {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    /* Hide the desktop menu */
+    #desktop-menu {
+      display: none;
+    }
+  }
