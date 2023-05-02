@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import "./Header.css";
+
 import {
   MdOutlineShoppingCart,
   MdOutlineFavoriteBorder,
   MdOutlineAddShoppingCart,
   MdOutlineSearch,
 } from "react-icons/md";
+import { images } from "../../assets";
+import Search from "../SearchBar/Search";
 
 const navItem = [
   { title: "Dashboard", href: "" },
@@ -22,76 +25,80 @@ export const Nav = () => {
   }
   return (
     <nav className="">
-      <div className=" bg-[#EAF4F4]">
-        <div className="flex items-center justify-between h-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="w-full flex justify-between">
+      <div className=" bg-[#EAF4F4]  lg:px-8 p-2 md:px-4 ">
+        <div className="flex items-center justify-between max-w-6xl mx-auto border-b md:border-none border-[#CCE3DE]">
+          <div className="w-full flex justify-between items-center">
             <a href="/" className="basis-1/6 text-gray-800">
-              <img
-                className="h-8 w-8"
-                src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                alt="Workflow"
-              />
+              <img className="w-16" src={images.logo} alt="Workflow" />
             </a>
-
-            <div className="search-form bg-[#ffffff] flex items-center  pl-3 rounded-full overflow-hidden">
-              <form action="">
-              <input type="search" placeholder="search.." className=" focus:outline-none rounded-full px-2 bg-[#fefefe]" />
-              </form>
-              <button className="px-4 text-[20px] bg-[#457B9D] text-white h-full w-full "><MdOutlineSearch/></button>
+            {/* search Form */}
+            <div className="hidden md:block">
+            <Search></Search>
             </div>
 
-            <div className="basis-1/4 hidden md:block" id="desktop-menu">
+            <div className="basis-1/4 ">
               <div className="flex gap-6 justify-end items-center">
                 <button className="relative">
-                  <MdOutlineFavoriteBorder className="text-[30px] text-[#457B9D] "/>
-                  <span className="absolute top-[0px] right-[0px] translate-x-[50%] translate-y-[-50%] text-[8px] bg-[#457B9D] text-white rounded-full w-4 h-4 inline-flex justify-center items-center">13</span>
+                  <MdOutlineFavoriteBorder className="text-[25px] md:text-[30px] text-[#457B9D] " />
+                  <span className="absolute top-[0px] right-[0px] translate-x-[50%] translate-y-[-50%] text-[6px] md:text-[10px] md:p-2 bg-[#457B9D] text-white rounded-full w-3 md:w-4 h-3 md:h-4  inline-flex justify-center items-center">
+                    64
+                  </span>
                 </button>
                 <button className="relative">
-                  <MdOutlineShoppingCart className="text-[30px] text-[#457B9D] "/>
-                  <span className="absolute top-[0px] right-[0px] translate-x-[50%] translate-y-[-50%] text-[8px] bg-[#457B9D] text-white rounded-full w-4 h-4 inline-flex justify-center items-center">24</span>
+                  <MdOutlineShoppingCart className="text-[25px] md:text-[30px] text-[#457B9D] " />
+                  <span className="absolute top-[0px] right-[0px] translate-x-[50%] translate-y-[-50%] text-[6px] md:text-[10px] md:p-2 bg-[#457B9D] text-white rounded-full w-3 md:w-4 h-3 md:h-4  inline-flex justify-center items-center">
+                   24
+                  </span>
                 </button>
-                <button className="bg-[#457B9D] px-8 py-1 rounded-full text-white inline-flex items-center justify-center leading-[2]">Login</button>
+              
+                <button className="bg-[#457B9D] text-[10px] px-3 md:px-4 py-1 md:py-2 rounded-full text-white">
+                  LOGIN
+                </button>
               </div>
             </div>
           </div>
-          <div className="-mr-2 flex md:hidden">
-            <button
-              type="button"
-              className=" inline-flex items-center justify-center p-2 rounded-md text-gray-400  hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-gray-800 transition duration-150 ease-in-out"
-              id="main-menu"
-              aria-label="Main menu"
-              aria-haspopup="true"
-              onClick={toggleMobileMenu}
+        </div>
+        <div className="flex justify-between md:hidden pt-2">
+          <button
+            type="button"
+            className=" inline-flex items-center justify-center  rounded text-gray-400 focus:text-[#457B9D] hover:text-[#457B9D]  transition duration-150 ease-in-out " /* hover:bg-[#457B9D] focus:outline-none focus:bg-[#457B9D] focus:text-white */
+
+            id="main-menu"
+            aria-label="Main menu"
+            aria-haspopup="true"
+            onClick={toggleMobileMenu}
+          >
+            <svg
+              className="h-6 w-6"
+              stroke="currentColor"
+              fill="none"
+              viewBox="0 0 24 24"
             >
-              <svg
-                className="h-6 w-6"
-                stroke="currentColor"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                ></path>
-              </svg>
-            </button>
-          </div>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+          <div className="block md:hidden">
+            <Search></Search>
+            </div>
         </div>
       </div>
 
       {/* For Mobile menu */}
       <div
-        className={`md:hidden ${mobileMenuVisible ? "block" : "hidden"}`}
+        className={`md:hidden ${mobileMenuVisible ? "block bg-[#EAF4F4]" : "hidden"}`}
         id="mobile-menu"
       >
-        <div className="px-2 pt-2 pb-3 sm:px-3">
+        <div className="">
           {navItem.map((data, index) => {
             return (
               <a
                 href="/"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-800  focus:outline-none focus:text-gray-800 focus:bg-gray-700"
+                className="block py-1 text-[10px] p-2 font-medium text-gray-800  focus:outline-none focus:text-white  hover:text-[#457B9D]  transition duration-150 ease-in-out"
               >
                 {data.title}
               </a>
