@@ -9,14 +9,15 @@ import {
 } from "react-icons/md";
 import { images } from "../../assets";
 import Search from "../SearchBar/Search";
+import { Link } from "react-router-dom";
 
 const navItem = [
-  { title: "Fashion", href: "" },
-  { title: "Groceries", href: "" },
-  { title: "Health & Beauty", href: "" },
-  { title: "Home & Lifestyle", href: "" },
-  { title: "Mobiles & Tablets", href: "" },
-  { title: "Automobiles", href: "" },
+  { title: "Fashion", href: "/fashion" },
+  { title: "Groceries", href: "/groceries" },
+  { title: "Health & Beauty", href: "/health-beauty" },
+  { title: "Home & Lifestyle", href: "/home-life-style" },
+  { title: "Mobiles & Tablets", href: "/mobiles-tablets" },
+  { title: "Automobiles", href: "/automobiles" },
 ];
 
 export const Nav = () => {
@@ -28,7 +29,7 @@ export const Nav = () => {
   return (
     <nav className="">
       <div className=" bg-[#CCE3DE]  lg:px-8 p-2 md:px-4 ">
-        <div className="flex flex-col items-center justify-between max-w-6xl mx-auto border-b md:border-none border-[#CCE3DE]">
+        <div className="flex flex-col items-center justify-between screenSize border-b md:border-none border-[#CCE3DE]">
           <div className="w-full flex justify-between items-center">
             <a href="/" className="basis-1/6 text-gray-800">
               <img className="w-16" src={images.logo} alt="Workflow" />
@@ -70,12 +71,13 @@ export const Nav = () => {
          <div className="max-w-6xl flex mx-auto">
          {navItem.map((data, index) => {
             return (
-              <a
-                href="/"
-                className="block py-2 text-[14px] px-3 font-medium text-gray-800  focus:outline-none focus:text-[#457B9D] hover:text-[#457B9D]  transition duration-150 ease-in-out first:pl-0"
+              <Link
+              key={index}
+                to={data?.href}
+                className="link px-3  first:pl-0"
               >
                 {data.title}
-              </a>
+              </Link>
             );
           })}
          </div>

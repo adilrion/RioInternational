@@ -1,1 +1,1 @@
-Rich black: 
+background color: bg-[#a4c3b2]
